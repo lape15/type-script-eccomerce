@@ -14,3 +14,50 @@ $transparent: transparent;
 $mobile: 375px;
 $tablet: 768px;
 $desktop: 14440px;
+
+.flex-item {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+.items-center {
+  align-items: center;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+.p-1-5 {
+  padding: 1.5rem;
+}
+.m-1 {
+  margin: 1rem;
+}
+.m-auto {
+  margin: auto;
+}
+.m-lr-auto {
+  margin: 0 auto;
+}
+.m-tb-auto {
+  margin: auto 0;
+}
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+.w-25 {
+  width: 25%;
+}
+.ml-1 {
+  margin-left: 1rem;
+}
