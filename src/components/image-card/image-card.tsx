@@ -39,16 +39,18 @@ const product = [
 const ImageCard = (props:Props) => {
     const [shoeView,setShoeView] = useState([...product])
     const [cardView,setCardView] =  useState(shoeView[0])
+
     const setActiveView = (index: number) => {
         const temp= [...shoeView].map((sh,idx) => ({
             ...sh,
            active: index === idx ?  true : false
         }))
         setCardView(temp[index])
+        setShoeView([...temp])
     }
 
  return ( 
-       <div className='flex-item col'>
+       <div className='flex-item col flex items-center'>
          <div className='flex-item col p-1'>
              <div className='img-container'> 
                  <img src={cardView.main} 
@@ -59,11 +61,14 @@ const ImageCard = (props:Props) => {
                  </div>
             <div className='flex-item'>{
             shoeView.map((shoe,index) =>(
-            <div key={index} className='thumb ml-1' onClick={() =>  setActiveView   (index)}>
+            <div
+             key={index} 
+             className={`thumb ml-1 ${shoe.active ? 'active-preview' : ''}`}
+             onClick={() => setActiveView (index)}>
                 <img 
                 src={shoe.thumb} 
                 alt="view" 
-                className='img'/>
+                className={`img ${shoe.active ? 'active-preview' : ''}`}/>
             </div>
             )
               )
