@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import logo from './logo.svg';
-import './App.css';
-import color from './assets/color';
+import './App.scss';
 import { increment } from './slices/test';
 import { RootState } from './store';
 import LayOut from './layout';
+import Navbar from './components/navbar/navbar';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -14,6 +13,7 @@ function App() {
   return (
     <div className="App">
      <LayOut title="hello" />
+        <Navbar/>
     </div>
   );
 }
