@@ -1,10 +1,13 @@
 @import '../../assets/variables.scss';
 
 .img-container {
-  width: 350px;
+  width: 320px;
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
 }
 .thumb {
-  width: 100px;
+  width: 75px;
   cursor: pointer;
 }
 .img {

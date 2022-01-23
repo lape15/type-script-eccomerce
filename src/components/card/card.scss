@@ -1,0 +1,43 @@
+@import '../../assets/variables.scss';
+
+.title {
+  color: $orange;
+  font-size: 1rem;
+  font-weight: bold;
+  position: relative;
+  top: 20px;
+}
+
+.head {
+  color: #333;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+p.details {
+  font-size: 1rem;
+  color: grey;
+  line-height: 2;
+  margin-top: 0 40px;
+  padding: 0 10px;
+  width: 450px;
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+}
+
+.price {
+  h4 {
+    font-size: 1.3 5rem;
+  }
+  div {
+    font-size: 14px;
+    color: $orange;
+    background: lighten($orange, 40);
+    height: fit-content;
+    position: relative;
+    top: 15px;
+    left: 2px;
+    padding: 2px;
+  }
+}
