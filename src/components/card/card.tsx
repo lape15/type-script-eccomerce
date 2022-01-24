@@ -1,35 +1,35 @@
 
 import {useState} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import './card.scss'
 import cart from '../../assets/images/icon-cart-white.svg'
-import { AppDispatch } from '../../store'
-import { addToCart } from '../../slices/cart'
+import { AppDispatch, RootState } from '../../store'
+import { addCartItem } from '../../slices/cart'
 
 const shoe = {
     name: 'trendy shoe',
-    id: Math.random() * 9,
     imageUrl: 'whehbfjf',
     quantity: 0,
     price: 125
 }
-const Card = () => {
+    const Card = () => {
 
-const [count,setCount] = useState(0);
-    const dispatch = () => useDispatch<AppDispatch>()
+    const [count,setCount] = useState(0);
+    const dispatch = useDispatch();
 
     const addItemToCart = () => {
         const cartItem = {
             ...shoe,
             quantity: count,
-            price: shoe.price * count
+            price: shoe.price * count 
         }
-        dispatch(addToCart(cartItem))
+   
+    dispatch(addCartItem(cartItem))
+    
     }
 
     return <div className="block  flex ">
         <h6 className="title">SNEAKER COMPANY</h6>
-        {console.log({count})}
         <h3 className="head">Fall Limited Edition <br></br> Sneakers</h3>
         <section>
             <p className="details">
@@ -48,7 +48,7 @@ const [count,setCount] = useState(0);
                 <button className='btn' onClick={() => setCount(count + 1)}>&#43;</button>
                 </div>
                 <div className='flex-item add_cart'>
-                <button className='cart_btn' onClick={addItemToCart}><img src={cart} alt='cart'/> Add to cart</button>
+                <button className='cart_btn' onClick={ () =>count&& addItemToCart()}><img src={cart} alt='cart'/> Add to cart</button>
                 </div>
               
             </div>

@@ -1,15 +1,13 @@
-import { createSlice, PayloadAction,createAction,createReducer } from '@reduxjs/toolkit';
-
-
- export interface CartItem {
-    name: string
-    id:number
-    imageUrl: string
-    quantity: number
-    price: number
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+type  CartItem = {
+    name?: string
+    id?:number
+    imageUrl?: string
+    quantity?: number
+    price?: number
   }
 
-  type CartState = {
+  interface CartState {
     hidden: boolean;
     shoeCount:number;
     cartItems: Array<CartItem>
@@ -34,5 +32,16 @@ export const cartSlice = createSlice({
 
 })
 
-export const {addToCart} = cartSlice.actions;
+ const {addToCart} = cartSlice.actions;
+
+const addCartItem = (item: CartItem )=> (dispatch:Function,getState:Function) => {
+const {cartItems} = getState().cart
+const id = cartItems.length
+item.id = id
+dispatch(addToCart(item))
+}
+export{
+    addCartItem,
+    addToCart
+}
 export default cartSlice.reducer;
