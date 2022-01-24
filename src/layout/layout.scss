@@ -1,0 +1,8 @@
+@import '../assets/variables.scss';
+
+.layout {
+  padding: 50px;
+  @media (max-width: $tablet) {
+    flex-direction: column !important;
+  }
+}
