@@ -4,7 +4,7 @@ type  CartItem = {
     id?:number
     imageUrl?: string
     quantity?: number
-    price?: number 
+    price?: number
   }
 
   interface CartState {
