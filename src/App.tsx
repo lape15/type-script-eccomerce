@@ -4,19 +4,18 @@ import './App.scss';
 import { increment } from './slices/test';
 import { RootState } from './store';
 import Navbar from './components/navbar/navbar';
+import ModalContainer from './components/modal/portal';
 
 function App() {
   // const [count, setCount] = useState(0);
-  const count = useSelector((state: RootState) => state.counterReducer.count);
-  const dispatch = useDispatch();
+  // const cart = useSelector((state: RootState) => state.cart);
+  // const dispatch = useDispatch();
   return (
     <div className="App">
-        <Navbar/>
-        <p>
-          <button type="button" onClick={() => dispatch(increment())}>
-            count is: {count}
-          </button>
-        </p>
+         <Navbar/>
+         
+        {/* <LayOut title="hello" /> */}
+        <ModalContainer />
     </div>
   );
 }
