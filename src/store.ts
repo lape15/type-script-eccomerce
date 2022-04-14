@@ -5,7 +5,7 @@ import loggerMiddleware from './logger';
 const preloadedState = {};
 const store = configureStore({
   reducer: {
-    cart:cartReducer
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
   devTools: process.env.NODE_ENV !== 'production',

@@ -6,10 +6,20 @@
     font-size: 1.2rem;
     border-bottom: 1px solid $lighterBlack;
     justify-content: space-evenly;
+    padding-top: 1rem;
     .top {
         display: flex;
         &.user {
             align-items: center;
+            .avatar-wrapper {
+                border-radius: 50%;
+                @media (min-width: $tablet) {
+                    margin-left: 1rem;
+                }
+                &:hover {
+                    border: 1px solid $orange;
+                }
+            }
         }
     }
     .list {
@@ -41,7 +51,10 @@
     @media (max-width: $tablet) {
         border-bottom: none;
         justify-content: space-between;
-        padding: 0 2rem;
+        padding: 2rem 2rem 0;
+        @media (max-width: ($mobile - 1px)){
+            padding: 2rem 0.8rem 0;
+        }
         .menu {
             display: inline;
             margin-right: 1rem;

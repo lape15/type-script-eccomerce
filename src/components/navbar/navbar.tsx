@@ -3,7 +3,8 @@ import './navbar.scss';
 import logo from '../../assets/images/logo.svg'
 import avatar from '../../assets/images/image-avatar.png'
 import menu from '../../assets/images/icon-menu.svg'
-import closeIcon from '../../assets/images/icon-close.svg'
+import closeIcon from '../../assets/images/icon-close.svg';
+import Cart from '../cart/cart';
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false)
@@ -31,8 +32,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="top user">
-                <p>cart</p>
-                <img className="avatar" src={avatar}/>
+                <Cart/>
+                <div className='avatar-wrapper'><img className="avatar" src={avatar}/></div>
             </div>
             {
                 showMobileMenu && 

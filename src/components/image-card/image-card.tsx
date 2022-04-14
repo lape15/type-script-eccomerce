@@ -51,7 +51,7 @@ const ImageCard = (props:Props) => {
 
  return ( 
        <div className='flex-item col flex items-center'>
-         <div className='flex-item col p-1'>
+         <div className='flex-item col'>
              <div className='img-container'> 
                  <img src={cardView.main} 
                  alt="card_img"  

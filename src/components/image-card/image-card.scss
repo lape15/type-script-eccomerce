@@ -7,8 +7,12 @@
   }
 }
 .thumb {
-  width: 75px;
+  @media (min-width: $tablet) {
+    width: 75px;
+    display: block;
+  }  
   cursor: pointer;
+  display: none;
 }
 .img {
   width: 100%;

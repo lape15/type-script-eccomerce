@@ -27,21 +27,27 @@ export const cartSlice = createSlice({
     reducers:{
         addToCart:(state,action: PayloadAction<CartItem>) => {
         state.cartItems.push(action.payload)
+        },
+        removeFromCart:(state,action: PayloadAction<CartItem["id"]>)=> {
+            state.cartItems.splice(action.payload as number,1)
         }
     }
 
 })
 
- const {addToCart} = cartSlice.actions;
+ const {addToCart,removeFromCart} = cartSlice.actions;
 
 const addCartItem = (item: CartItem )=> (dispatch:Function,getState:Function) => {
 const {cartItems} = getState().cart
 const id = cartItems.length
 item.id = id
 dispatch(addToCart(item))
+console.log(getState(), {cartItems})
 }
+
 export{
     addCartItem,
-    addToCart
+    addToCart,
+    removeFromCart,
 }
 export default cartSlice.reducer;
