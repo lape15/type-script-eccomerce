@@ -2,6 +2,18 @@
 
 .wrapper{
     height: calc(100vh - 80px);
-    border:1px solid blue;
     padding:20px;
+    overflow-y: auto;
+}
+
+.items{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+}
+.item{
+    flex: 1;
+    position: relative;
 }

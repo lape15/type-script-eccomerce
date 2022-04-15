@@ -42,7 +42,7 @@ export function getValue(key: keyof ShopData, data: ShopData) {
   return data[key];
 }
 
-export const getItemsKey = (collectionItems: ShopData): Array<ShopData> => {
+export const getItemsKey = (collectionItems: ShopData): Array<Item> => {
   const items: any = [];
   const itemKeys = Object.keys(collectionItems);
   for (let i = 0; i < itemKeys.length; i += 1) {

@@ -4,9 +4,40 @@ import collections from './collections.module.scss';
 import { Item, ShopData, getItemsKey } from '../../utils/utils';
 
 const Collections = () => {
-  const [collectionItems, setCollectionItems] = useState(getItemsKey(SHOP_DATA));
+  const [collectionItems, setCollectionItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  return <div className={collections.wrapper}>Might all collections reside here or not</div>;
+  useEffect(() => {
+    setLoading(true);
+    const timedId = setTimeout(() => {
+      setCollectionItems(getItemsKey(SHOP_DATA));
+      setLoading(false);
+    }, 4000);
+    () => clearTimeout(timedId);
+  }, []);
+
+  return (
+    <div className={collections.wrapper}>
+      {console.log({ collectionItems })}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={collections.items}>
+          {collectionItems.map((collection) => (
+            <div key={collection.id} className={collections.item}>
+              <div>
+                <h3>{collection.name}</h3>
+                <img src={collection.imageUrl} alt="item" />
+              </div>
+              <div>
+                <p>{collection.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Collections;
