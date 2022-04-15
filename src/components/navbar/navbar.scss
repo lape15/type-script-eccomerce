@@ -7,6 +7,7 @@
     border-bottom: 1px solid $lighterBlack;
     justify-content: space-evenly;
     padding-top: 1rem;
+    height: 80px;
     .top {
         display: flex;
         &.user {
@@ -29,10 +30,17 @@
             margin-right: 1rem;
             color: $lighterBlack;
             cursor: pointer;
-            padding-bottom: 3.5rem;
+            padding-bottom: 1.5rem;
             &:hover {
                 color: $black;
                 border-bottom: 2px solid $orange;
+            }
+            a{
+                text-decoration: none;
+                color: $lighterBlack;
+            }
+            a.active{
+                color: $orange;
             }
         }
     }    
