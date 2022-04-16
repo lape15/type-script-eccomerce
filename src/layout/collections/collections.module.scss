@@ -9,11 +9,9 @@
 .items{
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: center;
     align-items: center;
-}
-.item{
-    flex: 1;
-    position: relative;
+    @media (max-width: $tablet){
+        flex-direction: column;
+    }
 }

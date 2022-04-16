@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import SHOP_DATA from '../../shop-data';
 import collections from './collections.module.scss';
-import { Item, ShopData, getItemsKey } from '../../utils/utils';
+import { Item, getItemsKey } from '../../utils/utils';
+import ShopItem from '../../components/shop-item/item';
 
 const Collections = () => {
   const [collectionItems, setCollectionItems] = useState<Item[]>([]);
@@ -18,21 +19,12 @@ const Collections = () => {
 
   return (
     <div className={collections.wrapper}>
-      {console.log({ collectionItems })}
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div className={collections.items}>
           {collectionItems.map((collection) => (
-            <div key={collection.id} className={collections.item}>
-              <div>
-                <h3>{collection.name}</h3>
-                <img src={collection.imageUrl} alt="item" />
-              </div>
-              <div>
-                <p>{collection.price}</p>
-              </div>
-            </div>
+            <ShopItem collection={collection} key={collection.id} />
           ))}
         </div>
       )}
