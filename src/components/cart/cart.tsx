@@ -50,7 +50,7 @@ const Cart = () => {
                           <br />${item.price} x {item.quantity}&nbsp;&nbsp;{' '}
                           <span>${itemAmount(item.price as number, item.quantity as number)}</span>
                         </p>
-                        <img src={deleteIcon} alt="Delete Icon" onClick={() => removeCartItem(item.id as number)} />
+                        <img src={deleteIcon} alt="Delete Icon" onClick={() => removeCartItem(index)} />
                       </div>
                     ))}
                     <button className="cart_btn checkout">Checkout</button>
