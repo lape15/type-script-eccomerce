@@ -6,31 +6,7 @@ export type Item = {
   price?: number;
 };
 export interface ShopData {
-  hats: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: Array<Item>;
-  };
-  sneakers: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: Array<Item>;
-  };
-  jackets: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: Array<Item>;
-  };
-  women: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: Array<Item>;
-  };
-  men: {
+  [key: string]: {
     id: number;
     title: string;
     routeName: string;
