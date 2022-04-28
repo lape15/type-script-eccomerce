@@ -1,0 +1,17 @@
+@import '../../assets/variables.scss';
+
+.wrapper{
+    height: calc(100vh - 80px);
+    padding:20px;
+    overflow-y: auto;
+}
+
+.items{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: $tablet){
+        flex-direction: column;
+    }
+}
