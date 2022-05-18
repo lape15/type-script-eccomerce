@@ -3,21 +3,12 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type CheckoutContent = {
-    display: boolean;
-}
-
-type ProductModalDisplay = {
-    display: boolean
-}
 
 type ModalProps = {
     itemModal : boolean,
     id? : number,
     show: boolean,
     checkoutModal: boolean,
-    checkout: CheckoutContent,
-    productDisplay: ProductModalDisplay,
 }
 
 const initialState : ModalProps = {
@@ -25,12 +16,6 @@ const initialState : ModalProps = {
     id: 0,
     show: false,
     checkoutModal: false,
-    checkout: {
-        display: false,
-    },
-    productDisplay: {
-        display: false,
-    }
 }
 
 const modalSlice = createSlice({

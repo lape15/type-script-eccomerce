@@ -11,7 +11,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<LayOut />} />
-        <Route path="/collections" element={<Collections />} />
+        <Route path="/collections" element={<Collections />} >
+          <Route path=":category" element={<Collections />} />
+        </Route>
       </Routes>
       <ModalContainer />
     </div>

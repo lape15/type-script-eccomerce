@@ -5,7 +5,7 @@ import ProductModal from './product-modal';
 import  {useSelector, useDispatch} from 'react-redux';
 import { RootState } from '../../store';
 import { useEffect, useRef } from 'react';
-import {productModalDisplay} from "../../slices/modal";
+import {productModalDisplay, checkoutModalDisplay} from "../../slices/modal";
 
 type Props = {
     children?: object;
@@ -39,7 +39,7 @@ const Modal = (props: Props) => {
     }
 
     const closeModal = () => {
-        dispatch(productModalDisplay());
+        showitemModal ? dispatch(productModalDisplay()) : dispatch(checkoutModalDisplay())
     }
 
     useEffect( () => {
