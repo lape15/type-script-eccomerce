@@ -3,27 +3,34 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
 type ModalProps = {
     itemModal : boolean,
     id? : number,
     show: boolean,
+    checkoutModal: boolean,
 }
 
 const initialState : ModalProps = {
     itemModal: false,
     id: 0,
     show: false,
+    checkoutModal: false,
 }
 
 const modalSlice = createSlice({
     name: 'ModalDisplay',
     initialState,
     reducers: {
-        itemModalDisplay(state) {
-            state.show = !state.show,
+        productModalDisplay(state) {
+            state.itemModal= !state.itemModal;
         },
         checkoutModalDisplay(state) {
-
+            state.checkoutModal= !state.checkoutModal;
         }
     }
 })
+
+export const {productModalDisplay, checkoutModalDisplay} = modalSlice.actions
+
+export default modalSlice.reducer;

@@ -1,0 +1,74 @@
+@import '../../assets/variables.scss'; 
+
+.modal-wrapper {
+    background-color: rgba($black, 0.64);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 3;
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    overflow: hidden;
+    bottom: 0;
+
+    .checkout-wrapper {
+        text-align: center;
+        background-color: $white;
+        padding: 5rem;
+
+        .checkout-text{
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        button {
+            @extend .cart_btn;
+            margin-left: 0;
+            margin-top: 2rem;
+        }
+    }
+
+    .close-button {
+        background-color: $transparent;
+        border: none;
+        svg{
+            path{
+                fill: $white;
+                &:hover{
+                    fill: $orange;
+                }
+            }
+        }
+    }
+
+    .product-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        .slide-button-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+
+            path {
+                    &:hover {
+                    stroke: $orange;
+                }
+            }
+            &.previous {
+                left: 0;
+            }
+            &.next {
+                right: 0
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ import Modal from './modal';
 
 const ModalContainer = () => {
     const portal = document.getElementById('portal');
+    // console.log(portal)
     return (
         portal ? createPortal(<Modal/>, portal) : null
     )
