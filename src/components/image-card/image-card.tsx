@@ -1,6 +1,6 @@
 import React, {useState}from 'react'
 import { useDispatch } from 'react-redux'
-import { productModalDisplay } from '../../slices/modal'
+import {  modalToDisplay } from '../../slices/modal'
 import one from "../../assets/images/image-product-1.jpg"
 import oneThumb from '../../assets/images/image-product-1-thumbnail.jpg'
 import two from '../../assets/images/image-product-2.jpg'
@@ -12,9 +12,9 @@ import fourThumb from '../../assets/images/image-product-4-thumbnail.jpg';
 
 import './image-card.scss'
 
-type Props = {
-    title?: string
-}
+// type Props = {
+//     title?: string
+// }
 
 const product = [
     {
@@ -38,7 +38,7 @@ const product = [
         active:false
     }
 ]
-const ImageCard = (props:Props) => {
+const ImageCard = () => {
     const [shoeView,setShoeView] = useState([...product])
     const [cardView,setCardView] =  useState(shoeView[0])
     const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const ImageCard = (props:Props) => {
     }
 
     const ModalDisplay = () => {
-        dispatch(productModalDisplay())
+        dispatch(modalToDisplay('viewProduct'))
     }
 
  return ( 
@@ -72,9 +72,9 @@ const ImageCard = (props:Props) => {
                  onClick = {ModalDisplay}
                  />
             </div>    
-        </div>
-        <div className='flex-item'>{
-        shoeView.map((shoe,index) =>(
+          </div>
+          <div className='flex-item'>{
+          shoeView.map((shoe,index) =>(
             <div
              key={index} 
              tabIndex={0}

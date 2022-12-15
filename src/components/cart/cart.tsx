@@ -2,7 +2,7 @@ import './cart.scss';
 import { useState } from 'react';
 import cart from '../../assets/images/icon-cart.svg';
 import { removeFromCart } from '../../slices/cart';
-import { checkoutModalDisplay } from '../../slices/modal';
+import { modalToDisplay } from '../../slices/modal';
 import { RootState } from '../../store'
 import { useSelector, useDispatch} from 'react-redux';
 import deleteIcon from '../../assets/images/icon-delete.svg'
@@ -26,8 +26,7 @@ const Cart = () => {
     }
 
     const showCheckoutModal = () => {
-        console.log({checkoutModalDisplay})
-        dispatch(checkoutModalDisplay());
+        dispatch(modalToDisplay('checkout'));
     }
 
 

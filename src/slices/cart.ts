@@ -36,9 +36,9 @@ export const cartSlice = createSlice({
 const { addToCart, removeFromCart } = cartSlice.actions;
 
 const addCartItem =
-  (cartItem: CartItem, isCollection: boolean = false) =>
+  (cartItem: CartItem, isCollection = false) =>
   (dispatch: Function, getState: Function) => {
-    const item = { ...cartItem };
+    const item = { ...cartItem }; 
     const { cartItems } = getState().cart;
     const newCart = [...cartItems];
     const getItem = cartItems.find((cartI: CartItem) => cartI.name === item.name);

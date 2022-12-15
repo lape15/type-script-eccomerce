@@ -1,0 +1,66 @@
+@import '../../assets/variables.scss';
+
+.signInWrapper {
+    margin: 0 auto;
+    // background-color: $grayishBlue;
+    padding: 5rem;
+    box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 54%);
+    backdrop-filter: blur(45px);
+    color: $white;
+
+    .input-container {
+        position: relative;
+        height: 60px;
+        font-size: 1rem;
+        input {
+            border: none;
+            border-radius: 0.5rem;
+            background-color: $darkgrayishBlue;
+            margin: 1rem 0;
+            &:focus {
+                outline: none;
+                background-color: $lightGrayishBlue;
+                border-bottom: $dark;
+                transition: background-color 0.5s ease-in-out;
+                + label {
+                    transform: translate(-20%, -100%) scale(0.75);
+                    color: $orange;
+                    transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+                }
+            }
+            &.is-valid {
+              background-color: $lightGrayishBlue;
+            }
+            &.is-valid + label{
+                transform: translate(-20%, -100%) scale(0.75);
+                color: $orange;
+            }
+        }
+
+        label {
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(0);
+            transition: transform 0.5s ease-in-out, color 0.5s ease-in-out ;
+            margin-left: 1rem; 
+            color: $white;           
+        }
+        
+    }
+    hr {
+        border: 1px solid $white;
+    }
+    .submit-button {
+      @extend .cart_btn;
+      transform: translateX(50%);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      padding: 16px 3rem;
+  
+    }
+    .alt-signup {
+        color: $orange;
+        text-decoration: none;
+    }
+}

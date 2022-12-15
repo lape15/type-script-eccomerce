@@ -29,19 +29,34 @@
             margin-top: 2rem;
         }
     }
+    
+    .modal-items-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: row-reverse;
 
-    .close-button {
-        background-color: $transparent;
-        border: none;
-        svg{
-            path{
-                fill: $white;
-                &:hover{
-                    fill: $orange;
+        .close-button {
+            background-color: $transparent;
+            border: none;
+            top: -2rem;
+            position: relative;
+            // top: calc(20px );
+            svg{
+                path{
+                    fill: $white;
+                    &:hover{
+                        fill: $orange;
+                    }
                 }
+            }
+            &.sign-in-modal-styling {
+                top: -2rem;
+                right: 0
             }
         }
     }
+    
 
     .product-wrapper {
         display: flex;
