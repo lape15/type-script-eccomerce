@@ -12,7 +12,6 @@ const ImageCard = () => {
 
   const setActiveView = (index: number) => {
     dispatch(getActiveProduct(index))
-    console.log(cardView.main, {cardView})
   };
 
     const keyPressHandler = (index: number) => (e: React.KeyboardEvent)=> {
