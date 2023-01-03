@@ -1,52 +1,58 @@
-// import React from "react";
-import { useDispatch } from "react-redux";
-import { productModalDisplay } from "../../slices/modal";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../slices/modal";
+import { getActiveProduct } from "../../slices/products";
 import './modal.scss';
 import ImageCard from "../image-card/image-card";
+import { RootState } from "../../store";
 
 const ProductModal = () => {
-    const dispatch = useDispatch();
-    const closeModal = (e:any) => {
-        e.stopPropagation();
-        dispatch(productModalDisplay())
+    const shoeView = useSelector((state:RootState) => state.product.showView)
+    const dispatch = useDispatch(); 
+    
+    const getActiveItem = (shop: typeof shoeView) => {
+        let itemIndex;
+        for(const sh in shop){
+            const item = shop[sh]
+            if(item.active === true){
+                itemIndex = sh;
+            }
+        }
+        return itemIndex;
     }
-    // const arr = [1,2,3,4,5,6,7]
-    // const doNext = (index: number) => {
-    //     if(index > 0 && index < arr.length-1){
-    //         index++;
-    //         console.log(arr[index])
-    //     }
-    // }
-    // const doPrevious = (index: number) => {
-    //     if(index > 0 && index <= arr.length-1){
-    //         index--;
-    //         console.log(arr[index])
-    //     }
-    // }
-    // const keyEventHandler = (e: React.KeyboardEvent<HTMLDivElement>) => { 
-    //     if (e.code === 'Escape'){
-    //         closeModal(e);
-    //     }
-    // }
-    // const keyHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    //     if (e.code === 'tab'){
-    //     }
-    // }
+
+    const doNext = () => {
+        let index: any = getActiveItem(shoeView)
+        if(index && index >= 0 && index < shoeView.length-1){
+            index++;
+            dispatch(getActiveProduct(index));
+        }
+    }
+
+    const doPrevious = () => {
+        let index: any = getActiveItem(shoeView)
+        if(index > 0 && index <= shoeView.length-1){
+            index--;
+            dispatch(getActiveProduct(index));
+        }
+    }
+
+    const keyEventHandler = (e: React.KeyboardEvent<HTMLDivElement>) => { 
+        if (e.code === 'Escape'){
+            dispatch(closeModal);
+        }
+    }
     return (
-            <div>
-                <div style={{textAlign: "right"}}>
-                    <button className="close-button" onClick={closeModal}>
-                        <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" 
-                            fill="#69707D" fillRule="evenodd"/>
-                        </svg>
-                    </button>
-                </div>
+            <div
+            onClick={(e) => e.stopPropagation() }
+            onKeyDown = {keyEventHandler}
+            >
+                
                 <div className="product-wrapper">
                     <div 
                     className="slide-button-wrapper previous"
                     aria-label="previous"
                     tabIndex={0}
+                    onClick = {doPrevious}
                     >
                         <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 1 3 9l8 8" stroke="#1D2026" strokeWidth="3" fill="none" fillRule="evenodd"/>
@@ -56,13 +62,14 @@ const ProductModal = () => {
                     className="slide-button-wrapper next"
                     aria-label="Next"
                     tabIndex={0}
-                    // onClick={doNext(0)}
+                    onClick={doNext}
                     >
                         <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
                             <path d="m2 1 8 8-8 8" stroke="#1D2026" strokeWidth="3" fill="none" fillRule="evenodd"/>
                         </svg>
                     </div>
-                    <ImageCard />
+                    <ImageCard
+                    />
                 </div>
 
             </div>

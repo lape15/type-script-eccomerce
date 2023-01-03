@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import{ useDispatch} from 'react-redux'
 import cartReducer from './slices/cart'
+import productReducer from './slices/products'
 import modalReducer from './slices/modal';
 import loggerMiddleware from './logger';
 const preloadedState = {};
@@ -8,6 +9,7 @@ const store = configureStore({
   reducer: {
     cart: cartReducer,
     modal: modalReducer,
+    product: productReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
   devTools: process.env.NODE_ENV !== 'production',

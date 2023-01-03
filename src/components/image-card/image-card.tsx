@@ -1,55 +1,17 @@
-import React, {useState}from 'react'
-import { useDispatch } from 'react-redux'
-import { productModalDisplay } from '../../slices/modal'
-import one from "../../assets/images/image-product-1.jpg"
-import oneThumb from '../../assets/images/image-product-1-thumbnail.jpg'
-import two from '../../assets/images/image-product-2.jpg'
-import twoThumb from '../../assets/images/image-product-2-thumbnail.jpg'
-import three from '../../assets/images/image-product-3.jpg';
-import threeThumb from '../../assets/images/image-product-3-thumbnail.jpg';
-import four from '../../assets/images/image-product-4.jpg';
-import fourThumb from '../../assets/images/image-product-4-thumbnail.jpg';
-
+// import React, {useState}from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../store'
+import {  modalToDisplay } from '../../slices/modal'
+import { getActiveProduct } from '../../slices/products'
 import './image-card.scss'
 
-type Props = {
-    title?: string
-}
-
-const product = [
-    {
-        main: one,
-        thumb: oneThumb,
-        active:true,
-    },
-    {
-        main:two,
-        thumb: twoThumb,
-        active:false
-    },
-    {
-        main:three,
-        thumb: threeThumb,
-        active:false
-    },
-    {
-        main:four,
-        thumb: fourThumb,
-        active:false
-    }
-]
-const ImageCard = (props:Props) => {
-    const [shoeView,setShoeView] = useState([...product])
-    const [cardView,setCardView] =  useState(shoeView[0])
+const ImageCard = () => {
+  const shoeView = useSelector((state:RootState) => state.product.showView)
+  const cardView = useSelector((state:RootState) => state.product.cardView)
     const dispatch = useDispatch();
 
   const setActiveView = (index: number) => {
-    const temp = [...shoeView].map((sh, idx) => ({
-      ...sh,
-      active: index === idx ? true : false,
-    }));
-    setCardView(temp[index]);
-    setShoeView([...temp]);
+    dispatch(getActiveProduct(index))
   };
 
     const keyPressHandler = (index: number) => (e: React.KeyboardEvent)=> {
@@ -59,7 +21,7 @@ const ImageCard = (props:Props) => {
     }
 
     const ModalDisplay = () => {
-        dispatch(productModalDisplay())
+        dispatch(modalToDisplay('viewProduct'))
     }
 
  return ( 
@@ -72,9 +34,9 @@ const ImageCard = (props:Props) => {
                  onClick = {ModalDisplay}
                  />
             </div>    
-        </div>
-        <div className='flex-item'>{
-        shoeView.map((shoe,index) =>(
+          </div>
+          <div className='flex-item'>{
+          shoeView.map((shoe,index) =>(
             <div
              key={index} 
              tabIndex={0}
@@ -91,16 +53,6 @@ const ImageCard = (props:Props) => {
               )
              }
          </div>
-      {/* <div className="flex-item">
-        {shoeView.map((shoe, index) => (
-          <div
-            key={index}
-            className={`thumb ml-1 ${shoe.active ? 'active-preview' : ''}`}
-            onClick={() => setActiveView(index)}>
-            <img src={shoe.thumb} alt="view" className={`img ${shoe.active ? 'active-preview' : ''}`} />
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };

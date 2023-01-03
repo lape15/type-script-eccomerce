@@ -3,7 +3,7 @@ import { checkoutModalDisplay } from "../../slices/modal"
 import { useDispatch } from "react-redux"
 import checkIcon from '../../assets/images/check.png'
 
-const checkoutModal = () => {
+const CheckoutModal = () => {
     const dispatch = useDispatch();
     const closeModal = (e: React.SyntheticEvent) => {
         e.stopPropagation();
@@ -29,4 +29,4 @@ const checkoutModal = () => {
 
 }
 
-export default checkoutModal;
+export default CheckoutModal;
